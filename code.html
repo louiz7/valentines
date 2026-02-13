@@ -475,7 +475,7 @@
         <input type="range" id="loveSlider" min="0" max="100" value="50" oninput="updateSlider()">
         <div class="slider-labels">
           <span>Ein bisschen</span>
-          <span>Unendlich 💖</span>
+          <span>Ganz doll</span>
         </div>
         <div class="slider-value" id="sliderValue">50%</div>
       </div>
@@ -499,12 +499,12 @@
   <!-- SCREEN 6: Finale -->
   <div class="screen" id="screen-6">
     <div class="finale-hearts">💕💖💕</div>
-    <h1>Yaaay! 🥳</h1>
-    <h2>Ich wusste es! 💕</h2>
+    <h1> 🥳</h1>
+    <h2>Ich wusste es!</h2>
     <div class="finale-message">
       Du hast alle Fragen richtig beantwortet!<br><br>
-      Noch <strong>11 Tage</strong> bis ich dich wieder in meinen Armen halten kann...<br><br>
-      Ich liebe dich unendlich ❤️‍🔥<br><br>
+      Noch <strong>11 Tage</strong> bis wir uns sehen und coole Roadtrips machen ich freue mich schon!<br><br>
+      <br><br>
       Happy Valentine's Day, mein Schatz! 💌
     </div>
     <div class="big-heart" style="margin-top: 30px;">💝</div>
@@ -599,7 +599,7 @@
         const val = parseInt(document.getElementById('loveSlider').value);
         correct = val === 100;
         if (!correct) {
-          feedbackEl.textContent = 'Mehr! Schieb den Regler ganz nach rechts! 💖';
+          feedbackEl.textContent = 'Ein bisschen mehr ;)';
           feedbackEl.className = 'feedback error';
           shakeCard(4);
         }
