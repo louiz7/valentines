@@ -498,15 +498,7 @@
 
   let currentScreen = 0;
   // wenn final-screen aktiv: setze Hintergrundbild aus assets
-if (n === 6) {
-  document.getElementById('screen-6').style.backgroundImage = "url('IMG_3028.HEIC')";
-  // zusätzlich: verstecke die floating hearts (falls nötig)
-  document.getElementById('heartsBg').style.display = 'none';
-} else {
-  // bei allen anderen screens entferne Background / zeige hearts
-  document.getElementById('screen-6').style.backgroundImage = '';
-  document.getElementById('heartsBg').style.display = '';
-}
+
 
   function startQuiz() {
     goToScreen(1);
@@ -515,6 +507,15 @@ if (n === 6) {
   function goToScreen(n) {
     document.getElementById('screen-' + currentScreen).classList.remove('active');
     currentScreen = n;
+    if (n === 6) {
+  document.getElementById('screen-6').style.backgroundImage = "url('IMG_3028.HEIC')";
+  // zusätzlich: verstecke die floating hearts (falls nötig)
+  document.getElementById('heartsBg').style.display = 'none';
+} else {
+  // bei allen anderen screens entferne Background / zeige hearts
+  document.getElementById('screen-6').style.backgroundImage = '';
+  document.getElementById('heartsBg').style.display = '';
+}
     const next = document.getElementById('screen-' + n);
     next.classList.remove('active');
     void next.offsetWidth;
