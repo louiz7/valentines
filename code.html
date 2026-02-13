@@ -504,25 +504,35 @@
     goToScreen(1);
   }
 
-  function goToScreen(n) {
-    document.getElementById('screen-' + currentScreen).classList.remove('active');
-    currentScreen = n;
-    if (n === 6) {
-  document.getElementById('screen-6').style.backgroundImage = "url('IMG_3028.HEIC')";
-  // zusätzlich: verstecke die floating hearts (falls nötig)
-  document.getElementById('heartsBg').style.display = 'none';
+ function goToScreen(n) {
+// remove old
+document.getElementById('screen-' + currentScreen).classList.remove('active');
+
+// set new current
+currentScreen = n;
+
+// update progress bar
+const progress = (n / 6) * 100;
+document.getElementById('progressBar').style.width = progress + '%';
+
+// set/clear final-screen background and hide hearts
+if (n === 6) {
+// use JPG/PNG for best browser support; if you keep HEIC, many browsers won't show it
+document.getElementById('screen-6').style.backgroundImage = "url('IMG_3028.jpg')";
+document.getElementById('screen-6').style.backgroundSize = 'cover';
+document.getElementById('screen-6').style.backgroundPosition = 'center';
+document.getElementById('heartsBg').style.display = 'none';
 } else {
-  // bei allen anderen screens entferne Background / zeige hearts
-  document.getElementById('screen-6').style.backgroundImage = '';
-  document.getElementById('heartsBg').style.display = '';
+document.getElementById('screen-6').style.backgroundImage = '';
+document.getElementById('heartsBg').style.display = '';
 }
-    const next = document.getElementById('screen-' + n);
-    next.classList.remove('active');
-    void next.offsetWidth;
-    next.classList.add('active');
-    const progress = (n / 6) * 100;
-    document.getElementById('progressBar').style.width = progress + '%';
-  }
+
+// show next screen with animation
+const next = document.getElementById('screen-' + n);
+next.classList.remove('active');
+void next.offsetWidth;
+next.classList.add('active');
+}
 
   function updateSlider() {
     const val = document.getElementById('loveSlider').value;
