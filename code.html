@@ -25,7 +25,35 @@
     z-index: 0;
     overflow: hidden;
   }
+/* Final‑screen background image (leicht transparent) */
+#screen-6 {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
+/* halbtransparente Overlay über dem Bild damit Text lesbar bleibt */
+#screen-6::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10,8,15,0.45); /* dunkel, leicht transparent */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inhalt des Final‑Screens über dem Overlay */
+#screen-6 > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Auf dem Final-Screen keine schwimmenden Emojis anzeigen */
+.screen.active ~ .hearts-bg, /* fallback - not used */ 
+#screen-6 ~ .hearts-bg { display: none !important; }
+  
   .floating-heart {
     position: absolute;
     font-size: 20px;
@@ -469,6 +497,16 @@
   }
 
   let currentScreen = 0;
+  // wenn final-screen aktiv: setze Hintergrundbild aus assets
+if (n === 6) {
+  document.getElementById('screen-6').style.backgroundImage = "url('assets/IMG_3028.HEIC')";
+  // zusätzlich: verstecke die floating hearts (falls nötig)
+  document.getElementById('heartsBg').style.display = 'none';
+} else {
+  // bei allen anderen screens entferne Background / zeige hearts
+  document.getElementById('screen-6').style.backgroundImage = '';
+  document.getElementById('heartsBg').style.display = '';
+}
 
   function startQuiz() {
     goToScreen(1);
